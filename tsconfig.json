@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    // 目标代码：ts -> js(es5/6/7...)
+    // 这里的esnext指的是es6及以后的，之所以是esnext 是因为我们在创建项目时选择使用babel来处理ts代码
+    "target": "esnext",
+    // 目标代码需要使用的模块化方案（commonjs require/module.exports/es module import/export）
+    "module": "esnext",
+    // 打开一些严格的检查
+    "strict": true,
+    // 对jsx进行怎样的处理
+    // preserve是 不处理；原来是什么样的jsx代码 就还保留什么样的jsx代码
+    // 用babel的话 是可以对jsx进行处理的
+    "jsx": "preserve",
+    // 辅助的导入功能
+    "importHelpers": true,
+    // 按照node的方式解析模块
+    "moduleResolution": "node",
+    // 跳过对一些库的类型检测
+    // 好处：1、节约时间 2、解决不同库类型的冲突问题
+    "skipLibCheck": true,
+    // es module 和 commonjs是否可以混合使用
+    // 这两个一般是一起使用的
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // 要不要生成映射文件（ts -> js）
+    "sourceMap": true,
+    // 文件路径在解析时，基本url
+    // 解析时 基于当前文件
+    "baseUrl": ".",
+    // 指定具体要解析使用的类型
+    // 如果不指定 默认使用的是target中的类型 esnext使用的类型 这里都能使用
+    "types": ["webpack-env"],
+    // 编译阶段的路径解析
+    "paths": {
+      "@/*": ["src/*"],
+      "components/*":["src/components/*"]
+    },
+    // 可以指定在项目中可以使用哪些库的类型
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  // 当前有哪些ts代码是需要编译解析的
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  // 排除
+  "exclude": ["node_modules"]
+}
